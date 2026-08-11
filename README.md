@@ -4,7 +4,7 @@ Static fixture site for manually QA-testing accessFlow's scanner `robots.txt` co
 (AC-2708 / [accessFlow#1364](https://github.com/acsbe/accessFlow/pull/1364)) on staging. Hosted via
 GitHub Pages at:
 
-**https://acsbe.github.io/qa-robots-test-site/**
+**https://nehemiah-accessibe.github.io/qa-robots-test-site/**
 
 ## Pages
 
@@ -19,7 +19,7 @@ prove the fix works, not just one.
 
 ## How to use for QA
 
-1. In accessFlow staging, add this site as a website (`acsbe.github.io/qa-robots-test-site` as the
+1. In accessFlow staging, add this site as a website (`nehemiah-accessibe.github.io/qa-robots-test-site` as the
    domain, or the full path if the product requires a bare domain — adjust as needed for how
    accessFlow models sub-path sites).
 2. Turn the `aflwScannerRobotsTxt` LaunchDarkly flag **on** for that website only.
@@ -38,7 +38,7 @@ in its default state when you're not actively mid-scenario.
 These need `robots.txt` itself to be different, so they're not simultaneously live. To run one:
 
 ```sh
-git clone https://github.com/acsbe/qa-robots-test-site.git
+git clone https://github.com/nehemiah-accessibe/qa-robots-test-site.git
 cd qa-robots-test-site
 
 # Full-disallow scenario: robots.txt blocks the entire site.

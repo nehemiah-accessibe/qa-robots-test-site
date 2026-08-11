@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://acsbe.github.io/qa-robots-test-site/</loc>
+    <loc>https://nehemiah-accessibe.github.io/qa-robots-test-site/</loc>
   </url>
   <url>
-    <loc>https://acsbe.github.io/qa-robots-test-site/public/about.html</loc>
+    <loc>https://nehemiah-accessibe.github.io/qa-robots-test-site/public/about.html</loc>
   </url>
   <url>
-    <loc>https://acsbe.github.io/qa-robots-test-site/private/secret.html</loc>
+    <loc>https://nehemiah-accessibe.github.io/qa-robots-test-site/private/secret.html</loc>
   </url>
 </urlset>
