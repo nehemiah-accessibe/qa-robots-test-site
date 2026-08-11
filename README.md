@@ -1,9 +1,9 @@
 # qa-robots-test-site
 
 Static fixture site for manually QA-testing a web crawler's `robots.txt` compliance. Hosted via
-GitHub Pages at:
+Netlify (continuous deploy from this repo's `main` branch) at:
 
-**https://nehemiah-accessibe.github.io/qa-robots-test-site/**
+**https://robots-qa.netlify.app/**
 
 ## Pages
 
@@ -60,7 +60,7 @@ git commit -am "restore default robots.txt"
 git push
 ```
 
-GitHub Pages redeploys within roughly a minute of a push — give it a moment before re-scanning.
+Netlify redeploys within roughly a minute of a push — give it a moment before re-scanning.
 
 ## Why a real hosted site, not a local fixture
 
