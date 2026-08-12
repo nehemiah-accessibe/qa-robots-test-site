@@ -10,20 +10,32 @@ Netlify (continuous deploy from this repo's `main` branch) at:
 - `/` — homepage, links to both pages below (exercises link-following discovery)
 - `/public/about.html` — always allowed
 - `/private/secret.html` — disallowed by the default `robots.txt`
-- `/sitemap.xml` — lists all three pages (exercises sitemap-derived discovery)
+- `/sitemap.xml` — lists all three pages above (exercises sitemap-derived discovery)
 
-Both common crawler discovery methods (sitemap-derived and link-following) reach
-`/private/secret.html`, so a scan needs to exclude it via *either* method to prove robots.txt
+**Netlify note:** Netlify's static hosting serves each `.html` file at both its real path
+(`/public/about.html`) *and* an extensionless "pretty URL" alias (`/public/about`) — this is
+Netlify's own baseline behavior, not something this repo's config controls (the old asset
+optimization feature that used to make this configurable was deprecated by Netlify in 2023; any
+`netlify.toml` setting for it is now silently ignored). So a full crawl of this site actually
+finds **5** URLs, not 3: `/`, `/public/about`, `/public/about.html`, `/private/secret`, and
+`/private/secret.html`. This doesn't break the test — `Disallow: /private/` is a path-prefix rule
+that correctly matches both `/private/secret` and `/private/secret.html` — but expect **5** pages
+with robots.txt compliance off and **3** with it on, not 3 and 2.
+
+Both common crawler discovery methods (sitemap-derived and link-following) reach the private page
+(as both URL variants), so a scan needs to exclude it via *either* method to prove robots.txt
 compliance actually works, not just one.
 
 ## How to use for QA
 
 1. Point the crawler/scanner under test at this site (as a full URL or domain, depending on how
    the tool being tested models sites).
-2. Run a scan/crawl with robots.txt compliance enabled. Confirm `/private/secret.html` never
-   appears among crawled pages, while `/` and `/public/about.html` appear normally.
+2. Run a scan/crawl with robots.txt compliance enabled. Confirm neither `/private/secret` nor
+   `/private/secret.html` appears among crawled pages, while `/`, `/public/about`, and
+   `/public/about.html` all appear normally (3 pages total).
 3. Run the same scan/crawl with robots.txt compliance disabled (if the tool under test supports
-   toggling it) as a regression check — `/private/secret.html` should now be crawled normally.
+   toggling it) as a regression check — both `/private/secret` and `/private/secret.html` should
+   now be crawled normally (5 pages total).
 
 The live `robots.txt` at the repo root is the "basic disallow" scenario and should be left as the
 default between test runs — other scenarios need a different `robots.txt` and are handled by
